@@ -1,0 +1,4 @@
+Line 4267: <div class="video-call-page">
+Line 4278: <div class="video-grid" id="video-call-grid">
+Line 4335: <div class="video-call-page" style="align-items:center;justify-content:center;text-align:center">
+Line 6409: const grid = document.getElementById('video-call-grid');

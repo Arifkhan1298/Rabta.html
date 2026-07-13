@@ -1,0 +1,30 @@
+6419: async function startCamera() {
+6420:   try {
+6421:     const stream = await navigator.mediaDevices.getUserMedia({
+6422:       video: {
+6423:         width: { ideal: 1280 },
+6424:         height: { ideal: 720 },
+6425:         facingMode: 'user'
+6426:       },
+6427:       audio: true
+6428:     });
+6429:     localStream = stream;
+6430:     
+6431:     // Render the grid again to show the video element
+6432:     renderVideoCallGrid();
+6433:     
+6434:     // Make sure camera button is in active state
+6435:     const camBtn = document.getElementById('video-call-camera-btn');
+6436:     if (camBtn) camBtn.classList.add('active');
+6437:     
+6438:     showToast('Camera Active', 'Your camera has been opened', 'success');
+6439:   } catch (error) {
+6440:     console.error("Error accessing camera:", error);
+6441:     showToast('Camera Error', 'Could not access camera: ' + error.message, 'danger');
+6442:   }
+6443: }
+6444: 
+6445: function stopCamera() {
+6446:   if (localStream) {
+6447:     localStream.getTracks().forEach(track => track.stop());
+6448:     localStream = null;
